@@ -1,8 +1,28 @@
-from rest_framework.serializers import ModelSerializer
-from .models import Question
+from abc import ABC, abstractmethod
+from .models import Question, Quiz
+from typing import Any
 
 
-class QuestionSerializer(ModelSerializer):
-    class Meta:
-        model = Question
-        fields = ("number", "question", "answer")
+class Jsonifier(ABC):
+    @abstractmethod
+    def jsonify(self, object: Any):
+        pass
+
+
+class QuestionJsonifier(Jsonifier):
+    def jsonify(self, object: Question):
+        return {
+            "number": object.number,
+            "question": object.question,
+            "answer": object.answer,
+        }
+
+
+class QuizJsonifier(Jsonifier):
+    def jsonify(self, object: Quiz):
+        question_list = []
+        question_jsonifier = QuestionJsonifier()
+        for q in object.questions:
+            question_list.append(question_jsonifier.jsonify(q))
+
+        return {"questions": question_list}

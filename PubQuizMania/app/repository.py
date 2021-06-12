@@ -5,7 +5,7 @@ django.setup()
 
 from PubQuizMania.settings import db
 from experiments.terminal_app import QuestionConstants
-from PubQuizMania.app.models import Question
+from PubQuizMania.app.models import Question, Quiz
 
 
 class QuizRepository:
@@ -28,17 +28,17 @@ class QuizRepository:
                 )
             )
 
-        quiz = []
+        questions = []
         for result in results:
-            quiz.append(
+            questions.append(
                 Question(
-                    number=result[QuestionConstants.NUMBER],
-                    question=result[QuestionConstants.QUESTION],
-                    answer=result[QuestionConstants.ANSWER],
+                    result[QuestionConstants.NUMBER],
+                    result[QuestionConstants.QUESTION],
+                    result[QuestionConstants.ANSWER],
                 )
             )
 
-        return quiz
+        return Quiz(questions)
 
     def get_unlabelled_question(self):
         results = list(

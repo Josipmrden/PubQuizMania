@@ -1,7 +1,13 @@
-from djongo import models
+from typing import List
 
 
-class Question(models.Model):
-    number = models.IntegerField()
-    question = models.CharField(max_length=300)
-    answer = models.CharField(max_length=300)
+class Question:
+    def __init__(self, number: int, question: str, answer: str):
+        self.number = number
+        self.question = question
+        self.answer = answer
+
+
+class Quiz:
+    def __init__(self, questions: List[Question]):
+        self.questions = questions
