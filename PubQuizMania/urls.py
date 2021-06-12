@@ -17,9 +17,8 @@ from django.contrib import admin
 from django.urls import path
 
 from PubQuizMania.app.startup import start_script
-from PubQuizMania.app.controllers.quiz_controller import (
-    get_quiz,
-    get_quiz_nqt,
+from PubQuizMania.app.controller.controller import (
+    get_random_quiz,
     get_unlabeled_question,
 )
 from rest_framework.schemas import get_schema_view
@@ -36,12 +35,7 @@ urlpatterns = [
         name="openapi-schema",
     ),
     path("admin/", admin.site.urls),
-    path("quiz/", get_quiz, name="get_quiz"),
-    path(
-        "quiz/no_questions=<int:no_questions>&topics=<topics>",
-        get_quiz_nqt,
-        name="get_quiz_nqt",
-    ),
+    path("random_quiz/", get_random_quiz, name="get_quiz"),
     path("unlabeled/", get_unlabeled_question, name="get_unlabeled_question"),
 ]
 

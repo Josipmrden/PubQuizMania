@@ -1,23 +1,17 @@
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 
+from PubQuizMania.app.controller.validation import parse_question_params
 from PubQuizMania.app.serializers import QuestionSerializer
-from PubQuizMania.app.services import QuizService
+from PubQuizMania.app.service import QuizService
 
 quiz_service = QuizService()
 
 
 @api_view(["GET"])
-def get_quiz(request):
-    quiz = quiz_service.get_quiz(10, [])
-    data = [QuestionSerializer(x).data for x in quiz]
-
-    return HttpResponse(data)
-
-
-@api_view(["GET"])
-def get_quiz_nqt(request, no_questions, topics):
-    quiz = quiz_service.get_quiz(no_questions, topics.split(","))
+def get_random_quiz(request):
+    no_questions, topics = parse_question_params(request)
+    quiz = quiz_service.get_random_quiz(no_questions, topics)
     data = [QuestionSerializer(x).data for x in quiz]
 
     return HttpResponse(data)
