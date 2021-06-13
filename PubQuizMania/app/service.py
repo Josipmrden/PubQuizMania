@@ -13,8 +13,8 @@ class QuizService:
             return []
         return self.repository.get_quiz(no_questions, topics)
 
-    def get_unlabeled_question(self, no_questions: int):
-        return self.repository.get_unlabeled_question(no_questions)
+    def get_unlabeled_question(self, no_questions: int, random: bool = False):
+        return self.repository.get_unlabeled_question(no_questions, random)
 
     def get_categories(self):
         categories = self.repository.get_categories()

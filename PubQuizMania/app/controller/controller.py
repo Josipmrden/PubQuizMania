@@ -24,8 +24,8 @@ def get_random_quiz(request):
 
 @api_view(["GET"])
 def get_unlabeled_question(request):
-    no_questions = parse_unlabeled_question_request(request)
-    unlabeled_questions = quiz_service.get_unlabeled_question(no_questions)
+    no_questions, random = parse_unlabeled_question_request(request)
+    unlabeled_questions = quiz_service.get_unlabeled_question(no_questions, random)
     return JsonResponse(unlabeled_questions.to_json())
 
 

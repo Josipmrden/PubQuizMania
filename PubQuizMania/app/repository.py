@@ -40,12 +40,15 @@ class QuizRepository:
 
         return Quiz(questions)
 
-    def get_unlabeled_question(self, no_questions: int):
-        results = list(
-            self.quiz_collection.aggregate(
-                [{"$match": {"groups": {"$exists": False}}}, {"$sample": {"size": no_questions}}]
+    def get_unlabeled_question(self, no_questions: int, random: bool):
+        if random:
+            results = list(
+                self.quiz_collection.aggregate(
+                    [{"$match": {"groups": {"$exists": False}}}, {"$sample": {"size": no_questions}}]
+                )
             )
-        )
+        else:
+            results = list(self.quiz_collection.find({"groups": {"$exists": False}}).limit(no_questions))
 
         questions = []
         for result in results:

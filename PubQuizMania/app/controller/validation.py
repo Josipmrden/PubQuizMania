@@ -3,7 +3,7 @@ from typing import Tuple, List
 from urllib.parse import parse_qs
 
 
-from PubQuizMania.app.controller.request import RandomQuizRequest
+from PubQuizMania.app.controller.request import QuizRequest
 
 
 DEFAULT_NO_QUESTIONS = 10
@@ -14,8 +14,8 @@ def parse_question_params(request) -> Tuple[int, List]:
     param_dictionary = parse_qs(request.GET.urlencode())
 
     no_questions = (
-        param_dictionary[RandomQuizRequest.NO_QUESTIONS][0]
-        if RandomQuizRequest.NO_QUESTIONS in param_dictionary
+        param_dictionary[QuizRequest.NO_QUESTIONS][0]
+        if QuizRequest.NO_QUESTIONS in param_dictionary
         else DEFAULT_NO_QUESTIONS
     )
     try:
@@ -25,9 +25,7 @@ def parse_question_params(request) -> Tuple[int, List]:
     except:
         no_questions = DEFAULT_NO_QUESTIONS
 
-    topics = (
-        param_dictionary[RandomQuizRequest.TOPICS][0].split(",") if RandomQuizRequest.TOPICS in param_dictionary else []
-    )
+    topics = param_dictionary[QuizRequest.TOPICS][0].split(",") if QuizRequest.TOPICS in param_dictionary else []
 
     return no_questions, topics
 
@@ -36,8 +34,8 @@ def parse_unlabeled_question_request(request) -> int:
     param_dictionary = parse_qs(request.GET.urlencode())
 
     no_questions = (
-        param_dictionary[RandomQuizRequest.NO_QUESTIONS][0]
-        if RandomQuizRequest.NO_QUESTIONS in param_dictionary
+        param_dictionary[QuizRequest.NO_QUESTIONS][0]
+        if QuizRequest.NO_QUESTIONS in param_dictionary
         else DEFAULT_NO_UNLABELED_QUESTIONS
     )
     try:
@@ -47,7 +45,14 @@ def parse_unlabeled_question_request(request) -> int:
     except:
         no_questions = DEFAULT_NO_UNLABELED_QUESTIONS
 
-    return no_questions
+    random = False
+    if QuizRequest.RANDOM in param_dictionary:
+        try:
+            random = bool(param_dictionary[QuizRequest.RANDOM])
+        except:
+            pass
+
+    return no_questions, random
 
 
 def parse_labeled_question(request):

@@ -1,5 +1,6 @@
 from typing import List
 
-class RandomQuizRequest:
+class QuizRequest:
     NO_QUESTIONS = "no_questions"
-    TOPICS = "topics"
+    CATEGORIES = "categories"
+    RANDOM = "random"
