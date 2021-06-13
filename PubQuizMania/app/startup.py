@@ -8,7 +8,7 @@ from PubQuizMania.app.repository import QuizRepository
 
 def start_script():
     import_categories()
-    import_data()
+    # import_data()
 
 
 def import_questions_from_yaml(filename):

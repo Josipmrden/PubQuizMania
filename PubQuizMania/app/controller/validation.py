@@ -4,7 +4,7 @@ from urllib.parse import parse_qs
 
 
 from PubQuizMania.app.controller.request import QuizRequest
-
+from PubQuizMania.app.models import Question
 
 DEFAULT_NO_QUESTIONS = 10
 DEFAULT_NO_UNLABELED_QUESTIONS = 1
@@ -52,39 +52,66 @@ def parse_unlabeled_question_request(request) -> int:
         except:
             pass
 
-    return no_questions, random
+    excluded_questions = []
+
+    if QuizRequest.EXCLUDED_QUESTIONS in param_dictionary:
+        question_number_strings = param_dictionary[QuizRequest.EXCLUDED_QUESTIONS][0].split(",")
+        for number in question_number_strings:
+            try:
+                excluded_questions.append(int(number))
+            except:
+                excluded_questions = []
+                break
+
+    return no_questions, random, excluded_questions
+
+
+class LabeledQuestionValidationStatus:
+    QUESTION_NUMBER = "question_number"
+    QUESTION = "question"
+    ANSWER = "answer"
+    CATEGORIES = "categories"
+
+    def __init__(self, success: bool, question: Question, info: str) -> None:
+        self.success = success
+        self.question = question
+        self.info = info
 
 
 def parse_labeled_question(request):
     data = request.data
+    question = None
+    answer = None
     question_number = 0
     categories = []
-    error_message = "Invalid parameters"
+
+    invalid_status = LabeledQuestionValidationStatus(False, question, "Invalid parameters!")
 
     if LabeledQuestionValidationStatus.QUESTION_NUMBER not in data:
-        return LabeledQuestionValidationStatus(False, question_number, categories, error_message)
+        return invalid_status
 
     if LabeledQuestionValidationStatus.CATEGORIES not in data:
-        return LabeledQuestionValidationStatus(False, question_number, categories, error_message)
+        return invalid_status
 
     try:
         question_number = int(data[LabeledQuestionValidationStatus.QUESTION_NUMBER])
         categories = data[LabeledQuestionValidationStatus.CATEGORIES]
     except:
-        return LabeledQuestionValidationStatus(False, question_number, categories, error_message)
+        return invalid_status
 
     if question_number <= 0 or len(categories) == 0:
-        return LabeledQuestionValidationStatus(False, question_number, categories, error_message)
+        return invalid_status
 
-    return LabeledQuestionValidationStatus(True, question_number, categories, "")
+    if LabeledQuestionValidationStatus.QUESTION not in data:
+        return invalid_status
 
+    question = data[LabeledQuestionValidationStatus.QUESTION]
 
-class LabeledQuestionValidationStatus:
-    QUESTION_NUMBER = "question_number"
-    CATEGORIES = "categories"
+    if LabeledQuestionValidationStatus.ANSWER not in data:
+        return invalid_status
 
-    def __init__(self, success: bool, question_number: int, categories: List[str], info: str) -> None:
-        self.success = success
-        self.question_number = question_number
-        self.categories = categories
-        self.info = info
+    answer = data[LabeledQuestionValidationStatus.ANSWER]
+
+    question_object = Question(question_number, question, answer, categories)
+
+    return LabeledQuestionValidationStatus(True, question_object, "")

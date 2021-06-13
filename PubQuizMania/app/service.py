@@ -1,6 +1,6 @@
 from typing import List
 
-from PubQuizMania.app.models import AvailableCategories
+from PubQuizMania.app.models import AvailableCategories, Question
 from PubQuizMania.app.repository import QuizRepository, LabelingQuestionInsertionStatus
 
 
@@ -13,19 +13,19 @@ class QuizService:
             return []
         return self.repository.get_quiz(no_questions, topics)
 
-    def get_unlabeled_question(self, no_questions: int, random: bool = False):
-        return self.repository.get_unlabeled_question(no_questions, random)
+    def get_unlabeled_question(self, no_questions: int, random: bool, excluded_questions: List[int]):
+        return self.repository.get_unlabeled_question(no_questions, random, excluded_questions)
 
     def get_categories(self):
         categories = self.repository.get_categories()
         return AvailableCategories(categories)
 
-    def label_question(self, question_number: int, categories: List[str]):
+    def label_question(self, question: Question):
         available_categories = self.get_categories()
         available_abbreviations = [x.abbreviation for x in available_categories.categories]
 
-        for category in categories:
+        for category in question.categories:
             if category not in available_abbreviations:
                 return LabelingQuestionInsertionStatus(False, "Invalid labels!")
 
-        return self.repository.update_categories(question_number, categories)
+        return self.repository.update_question(question)

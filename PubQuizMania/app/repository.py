@@ -2,6 +2,8 @@ import django
 
 django.setup()
 
+from typing import List
+
 
 from PubQuizMania.settings import db
 from experiments.terminal_app import CategoryConstants, QuestionConstants
@@ -40,15 +42,27 @@ class QuizRepository:
 
         return Quiz(questions)
 
-    def get_unlabeled_question(self, no_questions: int, random: bool):
+    def get_unlabeled_question(self, no_questions: int, random: bool, excluded_questions: List[int]):
         if random:
-            results = list(
-                self.quiz_collection.aggregate(
-                    [{"$match": {"groups": {"$exists": False}}}, {"$sample": {"size": no_questions}}]
-                )
+            results = self.quiz_collection.aggregate(
+                [
+                    {"$match": {QuestionConstants.CATEGORIES: {"$size": 0}}},
+                    {"$sample": {"size": no_questions}},
+                ]
             )
+        elif len(excluded_questions) == 0:
+            results = self.quiz_collection.find({QuestionConstants.CATEGORIES: {"$size": 0}}).limit(no_questions)
         else:
-            results = list(self.quiz_collection.find({"groups": {"$exists": False}}).limit(no_questions))
+            results = self.quiz_collection.find(
+                {
+                    "$and": [
+                        {QuestionConstants.CATEGORIES: {"$size": 0}},
+                        {QuestionConstants.NUMBER: {"$nin": excluded_questions}},
+                    ]
+                }
+            ).limit(no_questions)
+
+        results = list(results)
 
         questions = []
         for result in results:
@@ -90,6 +104,8 @@ class QuizRepository:
                 }
             },
         )
+
+        return LabelingQuestionInsertionStatus(True, "")
 
     def delete_questions(self):
         self.quiz_collection.remove({})

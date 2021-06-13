@@ -24,8 +24,9 @@ def get_random_quiz(request):
 
 @api_view(["GET"])
 def get_unlabeled_question(request):
-    no_questions, random = parse_unlabeled_question_request(request)
-    unlabeled_questions = quiz_service.get_unlabeled_question(no_questions, random)
+
+    no_questions, random, excluded_questions = parse_unlabeled_question_request(request)
+    unlabeled_questions = quiz_service.get_unlabeled_question(no_questions, random, excluded_questions)
     return JsonResponse(unlabeled_questions.to_json())
 
 
@@ -42,7 +43,7 @@ def label_question(request):
     if not validation_object.success:
         return HttpResponseBadRequest()
 
-    response = quiz_service.label_question(validation_object.question_number, validation_object.categories)
+    response = quiz_service.label_question(validation_object.question)
 
     if not response.success:
         return HttpResponseBadRequest(response.info)
