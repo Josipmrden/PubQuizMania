@@ -1,6 +1,6 @@
 import yaml
 
-from terminal_app import QuestionConstants, get_question_collection
+from experiments.terminal_app import QuestionConstants, get_question_collection
 
 
 def import_data(filename):

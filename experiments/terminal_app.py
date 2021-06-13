@@ -7,6 +7,12 @@ class QuestionConstants:
     NUMBER = "number"
     QUESTION = "question"
     ANSWER = "answer"
+    CATEGORIES = "categories"
+
+
+class CategoryConstants:
+    NAME = "name"
+    ABBREVIATION = "abbrev"
 
 
 class Question:
@@ -22,9 +28,7 @@ def get_question_collection():
 
 def get_random_question():
     collection = get_question_collection()
-    max_question = collection.find_one(sort=[(QuestionConstants.NUMBER, -1)])[
-        QuestionConstants.NUMBER
-    ]
+    max_question = collection.find_one(sort=[(QuestionConstants.NUMBER, -1)])[QuestionConstants.NUMBER]
     random_number = randint(1, max_question)
 
     question = collection.find_one({QuestionConstants.NUMBER: random_number})

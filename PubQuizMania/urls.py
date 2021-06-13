@@ -18,8 +18,10 @@ from django.urls import path
 
 from PubQuizMania.app.startup import start_script
 from PubQuizMania.app.controller.controller import (
+    get_categories,
     get_random_quiz,
     get_unlabeled_question,
+    label_question,
 )
 from rest_framework.schemas import get_schema_view
 
@@ -37,6 +39,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("random_quiz/", get_random_quiz, name="get_quiz"),
     path("unlabeled/", get_unlabeled_question, name="get_unlabeled_question"),
+    path("categories/", get_categories, name="get_categories"),
+    path("label/", label_question, name="label_question")
 ]
 
 start_script()

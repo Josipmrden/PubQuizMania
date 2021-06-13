@@ -1,40 +1,47 @@
-import re
+import yaml
 
-from PubQuizMania.app.models import Question
+
+from experiments.terminal_app import CategoryConstants, QuestionConstants
+from PubQuizMania.app.models import Category, Question
+from PubQuizMania.app.repository import QuizRepository
 
 
 def start_script():
-    pass
+    import_categories()
+    import_data()
 
 
-def get_questions(filename):
-    questions = []
+def import_questions_from_yaml(filename):
+    data = dict()
 
-    f = open(filename, "r")
+    with open(filename, "r") as f:
+        data = yaml.load(f)
 
-    lines = f.readlines()
-    for line in lines:
-        question_number_result = re.search("^\d{1,}\.", line)
-        question_number_indexes = question_number_result.regs[0]
-        question_mark_index = line.index("?")
-
-        question_number = int(line[: question_number_indexes[1] - 1])
-        question = line[question_number_indexes[1] : question_mark_index + 1].strip()
-        answer = line[question_mark_index + 1 :].strip()
-
-        question_model = Question(
-            number=question_number, question=question, answer=answer
+    return [
+        Question(
+            x[QuestionConstants.NUMBER],
+            x[QuestionConstants.QUESTION],
+            x[QuestionConstants.ANSWER],
+            x[QuestionConstants.CATEGORIES] if QuestionConstants.CATEGORIES in x else [],
         )
-        questions.append(question_model)
-    f.close()
-
-    return questions
+        for x in data["questions"]
+    ]
 
 
 def import_data():
-    questions = get_questions("../experiments/questions3.txt")
+    questions = import_questions_from_yaml("./experiments/questions.yml")
+
+    repository = QuizRepository()
+    repository.delete_questions()
 
     for question in questions:
-        result = Question.objects.filter(number=question.number)
-        if len(result) == 0:
-            question.save()
+        if not repository.does_question_exist(question.number):
+            repository.add_question(question)
+
+
+def import_categories():
+    repository = QuizRepository()
+    all_categories = Category.get_all_categories()
+
+    for category in all_categories:
+        repository.add_category_if_not_exists(category)

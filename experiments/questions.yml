@@ -2,76 +2,76 @@ questions:
 - number: 1
   question: S kojom državom je SSSR 1939 započeo zimski rat?
   answer: Finska
-  groups:
+  categories:
     - POV
     - WWII
 - number: 2
   question: Koja je „Gospođa sa svjetiljkom“ začetnica modernog sestrinstva?
   answer: Florence Nightingale
-  groups:
+  categories:
     - POV
     - MED
     - STEM
 - number: 3
   question: Koje je nacionalnosti El Greco?
   answer: Španjolske
-  groups:
+  categories:
     - UMJ
     - SLI
 - number: 4
   question: Sporazum koja dva političara iz 1939. je doveo do stvaranja Banovine Hrvatske?
   answer: Cvetković-Maček
-  groups:
+  categories:
     - POV
     - HPOV
 - number: 5
   question: Koji antički junak ne može prestići kornjaču?
   answer: Ahilej
-  groups:
+  categories:
     - FIL
 - number: 6
   question: Preko kojeg je zaleđenog jezera stanovnicima Lenjingrada stizala pomoć
     u Drugom Svjetskom.Ratu?
   answer: Ladoga
-  groups:
+  categories:
     - POV
     - WWII
 - number: 7
   question: Koji je španjolski nogometni klub domaćin na stadionu Mestalla?
   answer: Valencia
-  groups:
+  categories:
     - SPO
     - NOG
 - number: 8
   question: Koji je sablasni brod osuđen na vječnu plovidbu morima?
   answer: Leteći Holandez
-  groups:
+  categories:
     - POV
     - KNJ
 - number: 9
   question: Tko je autor njemačke himne?
   answer: Hofmann von Fallersleben
-  groups:
+  categories:
     - KNJ
 - number: 10
   question: Otok States Island je upravna četvrt kojeg SAD grada?
   answer: New Yorka
-  groups:
+  categories:
     - GEO
 - number: 11
   question: Kako se naziva znanost o stijenama?
   answer: petrologija
-  groups:
+  categories:
     - STEM
 - number: 12
   question: Koji je stoti dio ruske rublje?
   answer: kopjejka
-  groups:
+  categories:
     - RAZ
 - number: 13
   question: Koji grad se prije zavo Epidaurum?
   answer: Cavtat
-  groups:
+  categories:
     - HPOV
     - POV
     - GEO
@@ -79,479 +79,478 @@ questions:
 - number: 14
   question: Tko je napisao novelu „Ubojstva u ulici Morque“?
   answer: E.A.Poe
-  groups:
+  categories:
     - KNJ
 - number: 15
   question: Iz kojeg su se crkvenog reda regrutirali inkvizitori?
   answer: Dominikanci
-  groups:
+  categories:
     - POV
 - number: 16
   question: Prema čemu je Argentina dobila ime?
   answer: Prema srebru
-  groups:
+  categories:
     - GEO
 - number: 17
   question: U kojoj se zemlji vodio takozvani „Prljavi rat“?
   answer: U Argentini
-  groups:
+  categories:
     - POV
 - number: 18
   question: Na koliko se godina bira Francuski predsjednik?
   answer: '7'
-  groups:
+  categories:
     - POL
 - number: 19
   question: Tko čeka Godota?
   answer: Gogi i Didi
-  groups:
+  categories:
     - KNJ
 - number: 20
   question: Koji je nobelovac 1910. otkrio Rh faktor i krvne grupe?
   answer: Landsteiner
-  groups:
+  categories:
     - STEM
     - BIO
     - KEM
 - number: 21
   question: U kojem je gradu Platon pokušao ostvariti idealnu državu?
   answer: U Sirakuzi
-  groups:
+  categories:
     - FIL
     - POV
     - APOV
 - number: 22
   question: Što je, prema engleskoj frazi, umrlo 3.veljače 1959.?
   answer: Glazba
-  groups:
+  categories:
     - GLA
 - number: 23
   question: Kome je, prema mitu, orao kljucao jetra koja bi preko noći opet narasla?
   answer: Prometeju
-  groups:
+  categories:
     - POV
     - APOV
 - number: 24
   question: Velika sfinga iz Gize ima tijelo lava i glavu kojeg faraona?
   answer: Kefrena
-  groups:
+  categories:
     - POV
     - APOV
 - number: 25
   question: Kerber je vrsta koje životinje?
   answer: Pas
-  groups:
+  categories:
     - FF
 - number: 26
   question: Kako se zove konj Don Quijotea?
   answer: Rozinanta
-  groups:
+  categories:
     - KNJ
 - number: 27
   question: Koji hrvat je prvi uporabio riječ enciklopedija?
   answer: Pavao Skalić
-  groups:
+  categories:
     - JEZ
 - number: 28
   question: Tko je glumio Crnu Guju?
   answer: Rowan Atkinson
-  groups:
+  categories:
     - FLM
 - number: 29
   question: Tko je tvorac Garfielda?
   answer: Jim Davis
-  groups:
+  categories:
     - FLM
     - STR
 - number: 30
   question: Koji film Gorana Markovića govori o napadu Velikih Boginja?
   answer: Variola Vera
-  groups:
+  categories:
     - FLM
     - HFLM
 - number: 31
   question: Koji jazz glazbenik je imao nadimak Sachmo?
   answer: Louis Armstrong
-  groups:
+  categories:
     - GLA
 - number: 32
   question: Koji sovjetski lider je na sjednici UN-a udarao cipelom po stolu?
   answer: Nikita Hruščov
-  groups:
+  categories:
     - POL
     - POV
 - number: 33
   question: Gorgone u grčkoj mitologiji su stvorenja s oštrim očnjacima i zmijskom
     kosom. Koja je najpoznatija gorgona?
   answer: Meduza
-  groups:
+  categories:
     - POV
     - APOV
 - number: 34
   question: Tko je režirao film „Apokalipsa danas“?
   answer: Francis Ford Coppola
-  groups:
+  categories:
     - FLM
 - number: 35
   question: Kako se zove mitološko biće pola čovjek-pola konj?
   answer: Kentaur
-  groups:
+  categories:
     - POV
     - APOV
 - number: 36
   question: Koje godine je nastala Bašćanska ploča?
   answer: 1100.godine
-  groups:
+  categories:
     - POV
     - HPOV
 - number: 37
   question: Koliko metara je duga jedna milja?
   answer: 1852 metra.
-  groups:
+  categories:
     - GEO
     - RAZ
 - number: 38
   question: Koje su godine Normani opsjeli Rab?
   answer: '1074'
-  groups:
+  categories:
     - POV
     - HPOV
 - number: 39
   question: Tko je autor romana „Robinson Crusoe“?
   answer: Daniel Defoe
-  groups:
+  categories:
     - KNJ
 - number: 40
   question: U kojem se gradu nalazi četvrt Zabranjeni grad?
   answer: U Pekingu.
-  groups:
+  categories:
     - GEO
 - number: 41
   question: Mauritanija je do 1960. bila čija kolonija?
   answer: Francuska
-  groups:
+  categories:
     - POV
 - number: 42
   question: Koja je najdulja Azijska rijeka?
   answer: Jang-ce
-  groups:
+  categories:
     - GEO
 - number: 43
   question: Koliko je Lutherovih teza o reformaciji crkve?
   answer: '95'
-  groups:
+  categories:
     - POV
 - number: 44
   question: Kojem je književnom liku Dulcinela bila ideal ljepote?
   answer: Don Quijotu
-  groups:
+  categories:
     - KNJ
 - number: 45
   question: Kakva se djeca mogu čuti na „Radiju 101“?
   answer: Zločesta
-  groups:
+  categories:
     - RAZ
 - number: 46
   question: U kojem je koncentracijskom logoru umrla Anna Frank?
   answer: Bergen-Belsen
-  groups:
+  categories:
     - POV
 - number: 47
   question: Koji je general vodio savezničke trupe na Dan D?
   answer: Dwight Eisenhower
-  groups:
+  categories:
     - POV
 - number: 48
   question: U kojem gradu živi Superman?
   answer: Metropolis
-  groups:
+  categories:
     - FLM
 - number: 49
   question: Gregor Samsa se jedno jutro probudio kao što?
   answer: Kukac
-  groups:
+  categories:
     - KNJ
 - number: 50
   question: Kroz koji se vulkan spuštaju junaci romana „Put u središte zemlje“?
   answer: Snaefell
-  groups:
+  categories:
     - KNJ
 - number: 51
   question: Koja bolest je poznata kao francuska bolest?
   answer: Sifilis
-  groups:
+  categories:
     - STEM
     - BIO
 - number: 52
   question: Tko je bio Hitlerov ministar propagande?
   answer: Jospeh Goebbels
-  groups:
+  categories:
     - POV
     - POL
     - WWII
 - number: 53
   question: Kako se zvao zrakoplov koji je bacio atomsku bombu na Hirošimu?
   answer: Enola Gay
-  groups:
+  categories:
     - POV
     - WWII
 - number: 54
   question: Koji slikar je naslikao „Zvjezdanu noć“?
   answer: Van Gogh
-  groups:
+  categories:
     - UMJ
     - SLI
 - number: 55
   question: Koji je naziv za pješaka u britanskoj vojsci?
   answer: Tommy
-  groups:
+  categories:
     - RAZ
 - number: 56
   question: Zbog čega je Al Capone završio na robiji u Alcatrazu?
   answer: Zbog utaje poreza
-  groups:
+  categories:
     - POV
 - number: 57
   question: Kako se zove bradavičasta svinja iz filma „Kralj lavova“?
   answer: Pumba
-  groups:
+  categories:
     - FLM
 - number: 58
   question: Koliko puta godišnje prosječi čovjek udahne i izdahne?
   answer: 50 milijuna puta
-  groups:
+  categories:
     - STEM
 - number: 59
   question: U kojoj državi se nalaze transilvanijske Alpe?
   answer: U Rumunjskoj
-  groups:
+  categories:
     - GEO
 - number: 60
   question: Tko je režirao i dobio Oscara za filmove „Ulica“ i „Amarcord“?
   answer: Federico Fellini
-  groups:
+  categories:
     - FLM
 - number: 61
   question: Kojoj životinjskoj vrsti pripada Napoleon iz Orwellove „Životinjske farme“?
   answer: Svinja
-  groups:
+  categories:
     - KNJ
 - number: 62
   question: Koje godine je sklopljena Hrvatsko-Ugarska nagodba?
   answer: '1868.'
-  groups:
+  categories:
     - POV
     - HPOV
 - number: 63
   question: Koji je najveći grad Benina?
   answer: Cotonou
-  groups:
+  categories:
     - GEO
 - number: 64
   question: Kojoj religiji pripada Kabala?
   answer: Judaizmu
-  groups:
+  categories:
     - VJE
 - number: 65
   question: Kako se zove UN-ova organizacija za prehranu i poljoprivredu?
   answer: FAO
-  groups:
+  categories:
     - RAZ
     - POL
 - number: 66
   question: Koje godine je srušen Berlinski zid?
   answer: '1989.'
-  groups:
+  categories:
     - POV
 - number: 67
   question: Kojoj državi pripada Sinajski poluotok?
   answer: Egipat
-  groups:
+  categories:
     - GEO
 - number: 68
   question: Na koliko se velikih župa podijelila NDH?
   answer: '22'
-  groups:
+  categories:
     - POV
-    - NDH
 - number: 69
   question: Kako se zove Hitlerova invazija na Balkan iz 1943?
   answer: Baklja
-  groups:
+  categories:
     - POV
     - WWII
 - number: 70
   question: Tko je autor romana „Oliver Twist“?
   answer: Charles Dickens
-  groups:
+  categories:
     - KNJ
 - number: 71
   question: Koji je najveći grad Korzike?
   answer: Ajaccio
-  groups:
+  categories:
     - GEO
 - number: 72
   question: Koja pustinja zauzima 90% Alžira?
   answer: Sahara
-  groups:
+  categories:
     - GEO
 - number: 73
   question: Koja sekta je željela sintetizirati kršćanstvo za židovskim učenjem?
   answer: Gnoza
-  groups:
+  categories:
     - POV
 - number: 74
   question: Tko je režirao film „Oprosti za kung-fu“?
   answer: Ognjen Sviličić
-  groups:
+  categories:
     - FLM
 - number: 75
   question: Kako se zove znanost o porijeklu imena i prezimena ljudi?
   answer: Genealogija
-  groups:
+  categories:
     - STEM
 - number: 76
   question: Koja velika civilizacija je sagradila Chichen Itzu?
   answer: Maye
-  groups:
+  categories:
     - POV
     - APOV
 - number: 77
   question: Kako se zove Dinosaur ljubimac obitelji Kremenko?
   answer: Dino
-  groups:
+  categories:
     - FLM
 - number: 78
   question: Koji bugarski kralj je napao Hrvatsku?
   answer: Simeon
-  groups:
+  categories:
     - HPOV
     - POV
 - number: 79
   question: Gdje se nalazi Bajkonur?
   answer: U Kazahstanu
-  groups:
+  categories:
     - GEO
 - number: 80
   question: Kad je osnovan Hrvatski akademski športski klub?
   answer: '1906.'
-  groups:
+  categories:
     - POV
     - SPO
 - number: 81
   question: Kada je Sueski kanal pušten u promet?
   answer: '1869.'
-  groups:
+  categories:
     - POV
 - number: 82
   question: U kojoj državi se nalazi Marrakesh?
   answer: Maroko
-  groups:
+  categories:
     - GEO
 - number: 83
   question: Koja se šahovska figura kreće isključivo dijagonalno?
   answer: Lovac
-  groups:
+  categories:
     - RAZ
 - number: 84
   question: U kojem su francuskom gradu u 14.stoljeću stolovali pape?
   answer: U Avignonu
-  groups:
+  categories:
     - POV
 - number: 85
   question: Koje su dimenzije terena u odbojci?
   answer: 9x18 metara
-  groups:
+  categories:
     - SPO
 - number: 86
   question: Koliko je dug gol u rukometu?
   answer: 3 metra.
-  groups:
+  categories:
     - SPO
 - number: 87
   question: S kojim državama graniči Mongolija?
   answer: S Rusijom i Kinom
-  groups:
+  categories:
     - GEO
 - number: 88
   question: Koji je stručni naziv za bolest crnu smrt?
   answer: Kuga
-  groups:
+  categories:
     - POV
     - STEM
 - number: 89
   question: Koja valuta se koristi u Angoli?
   answer: Kwanza
-  groups:
+  categories:
     - RAZ
 - number: 90
   question: Tko je napisao „Gulliverova putovanja“?
   answer: Johnatan Swift
-  groups:
+  categories:
     - KNJ
 - number: 91
   question: Ratnice Valkire pripadaju čijoj mitologiji?
   answer: Nordijskoj
-  groups:
+  categories:
     - POV
     - KNJ
     - APOV
 - number: 92
   question: Kako se zove bog zemlje i ratarstva u Slavenskoj mitologiji?
   answer: Veles
-  groups:
+  categories:
     - POV
     - HPOV
     - KNJ
 - number: 93
   question: Kako se naziva zemljina kora i gornji plašt?
   answer: Litosfera
-  groups:
+  categories:
     - STEM
 - number: 94
   question: Kako se naziva najveći Uranov satelit?
   answer: Titanija
-  groups:
+  categories:
     - SVE
 - number: 95
   question: U.C.Sampdoria je talijanski klub iz kojeg grada?
   answer: Genove
-  groups:
+  categories:
     - SPO
 - number: 96
   question: Tko je prvi predsjednik Malawija?
   answer: Hastings Kazumu Banda
-  groups:
+  categories:
     - POV
 - number: 97
   question: Koja je najdulja rijeka u Sj.Americi?
   answer: Mississippi
-  groups:
+  categories:
     - GEO
 - number: 98
   question: Kako se zove prva sonda koja je sletjela na Mars?
   answer: Viking
-  groups:
+  categories:
     - SVE
 - number: 99
   question: Koje godine je završio Američki građanski rat?
   answer: '1865'
-  groups:
+  categories:
     - POV
 - number: 100
   question: Koliko treba uranu da obiđe Sunce?
   answer: 29 godina
-  groups:
+  categories:
     - SVE
 - number: 101
   question: Tko je napisao „Ime ruže“?
   answer: Umberto Eco
-  groups:
+  categories:
     - KNJ
 - number: 102
   question: Što biljke stvaraju fotosintezom?
   answer: Šećer i kisik
-  groups:
+  categories:
     - STEM
 - number: 103
   question: Koji je vrhovni bog u nordijskoj mitologiji?
