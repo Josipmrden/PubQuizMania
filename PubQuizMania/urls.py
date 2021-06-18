@@ -19,6 +19,7 @@ from django.urls import path
 from PubQuizMania.app.startup import start_script
 from PubQuizMania.app.controller.controller import (
     get_categories,
+    get_labeling_stats,
     get_random_quiz,
     get_unlabeled_question,
     label_question,
@@ -40,6 +41,7 @@ urlpatterns = [
     path("random_quiz/", get_random_quiz, name="get_quiz"),
     path("unlabeled/", get_unlabeled_question, name="get_unlabeled_question"),
     path("categories/", get_categories, name="get_categories"),
+    path("label/stats/", get_labeling_stats, name="get_labeling_stats"),
     path("label/", label_question, name="label_question")
 ]
 

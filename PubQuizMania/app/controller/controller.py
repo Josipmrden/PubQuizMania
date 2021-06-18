@@ -1,4 +1,3 @@
-from PubQuizMania.app.models import LabeledCategories
 from django.http import JsonResponse
 from django.http.response import HttpResponse, HttpResponseBadRequest
 
@@ -49,3 +48,9 @@ def label_question(request):
         return HttpResponseBadRequest(response.info)
 
     return HttpResponse()
+
+@api_view(["GET"])
+def get_labeling_stats(request):
+    stats = quiz_service.get_labeling_stats()
+
+    return JsonResponse(stats.to_json())

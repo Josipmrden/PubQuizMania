@@ -88,3 +88,12 @@ class AvailableCategories(JsonSerializable):
 class LabeledCategories:
     def __init__(self, data):
         self.categories = data.categories
+
+
+class LabelingStats:
+    def __init__(self, labeled_questions, total_questions) -> None:
+        self.labeled_questions = labeled_questions
+        self.total_questions = total_questions
+
+    def to_json(self):
+        return {"total_questions": self.total_questions, "labeled_questions": self.labeled_questions}

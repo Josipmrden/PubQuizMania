@@ -138,6 +138,14 @@ class QuizRepository:
 
         return LabelingQuestionInsertionStatus(True, "")
 
+    def get_number_of_labeled_questions(self) -> int:
+        return self.quiz_collection.find(
+            {QuestionConstants.CATEGORIES: {"$exists": True, "$not": {"$size": 0}}}
+        ).count()
+
+    def get_number_of_total_questions(self) -> int:
+        return self.quiz_collection.count()
+
 
 class LabelingQuestionInsertionStatus:
     def __init__(self, success: bool, info: str):

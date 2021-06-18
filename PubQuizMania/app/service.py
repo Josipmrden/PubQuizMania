@@ -1,6 +1,6 @@
 from typing import List
 
-from PubQuizMania.app.models import AvailableCategories, Question
+from PubQuizMania.app.models import AvailableCategories, Question, LabelingStats
 from PubQuizMania.app.repository import QuizRepository, LabelingQuestionInsertionStatus
 
 
@@ -29,3 +29,9 @@ class QuizService:
                 return LabelingQuestionInsertionStatus(False, "Invalid labels!")
 
         return self.repository.update_question(question)
+
+    def get_labeling_stats(self) -> LabelingStats:
+        number_of_labeled_questions = self.repository.get_number_of_labeled_questions()
+        number_of_total_questions = self.repository.get_number_of_total_questions()
+
+        return LabelingStats(number_of_labeled_questions, number_of_total_questions)
