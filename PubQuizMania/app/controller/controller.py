@@ -40,7 +40,7 @@ def label_question(request):
     validation_object = parse_labeled_question(request)
 
     if not validation_object.success:
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(validation_object.info)
 
     response = quiz_service.label_question(validation_object.question)
 

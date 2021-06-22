@@ -77,6 +77,14 @@ class LabeledQuestionValidationStatus:
         self.info = info
 
 
+class InvalidLabelingConstants:
+    INVALID_PARAMS = "Invalid parameters!"
+    NO_CATEGORIES = "Categories not specified!"
+    NO_QUESTION = "Question not specified!"
+    NO_ANSWER = "Answer not specified!"
+    NO_NUMBER = "Question number not specified!"
+
+
 def parse_labeled_question(request):
     data = request.data
     question = None
@@ -84,32 +92,39 @@ def parse_labeled_question(request):
     question_number = 0
     categories = []
 
-    invalid_status = LabeledQuestionValidationStatus(False, question, "Invalid parameters!")
-
     if LabeledQuestionValidationStatus.QUESTION_NUMBER not in data:
-        return invalid_status
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_NUMBER)
 
     if LabeledQuestionValidationStatus.CATEGORIES not in data:
-        return invalid_status
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_CATEGORIES)
 
     try:
         question_number = int(data[LabeledQuestionValidationStatus.QUESTION_NUMBER])
         categories = data[LabeledQuestionValidationStatus.CATEGORIES]
     except:
-        return invalid_status
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.INVALID_PARAMS)
 
-    if question_number <= 0 or len(categories) == 0:
-        return invalid_status
+    if question_number <= 0: 
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_NUMBER)
+
+    if len(categories) == 0:
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_CATEGORIES)
 
     if LabeledQuestionValidationStatus.QUESTION not in data:
-        return invalid_status
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_QUESTION)
 
     question = data[LabeledQuestionValidationStatus.QUESTION]
 
+    if len(question) == 0:
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_QUESTION)
+
     if LabeledQuestionValidationStatus.ANSWER not in data:
-        return invalid_status
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_ANSWER)
 
     answer = data[LabeledQuestionValidationStatus.ANSWER]
+
+    if len(str(answer)) == 0:
+        return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_ANSWER)
 
     question_object = Question(question_number, question, answer, categories)
 
