@@ -40,6 +40,6 @@ class QuizService:
 
     def answer_question(self, question_number: int, question_answer: str) -> AnswerResult:
         true_answer = self.repository.get_answer_to_question_number(question_number)
-        is_correct = fuzz.ratio(question_answer, true_answer)
+        is_correct = fuzz.ratio(question_answer, true_answer) > 70
 
         return AnswerResult(question_number, question_answer, true_answer, is_correct)

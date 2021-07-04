@@ -14,7 +14,7 @@ from PubQuizMania.app.service import QuizService
 quiz_service = QuizService()
 
 
-@api_view(["POST"])
+@api_view(["GET"])
 def get_random_quiz(request):
     no_questions, topics = parse_question_params(request)
     quiz = quiz_service.get_random_quiz(no_questions, topics)

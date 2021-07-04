@@ -23,7 +23,7 @@ class QuizRepository:
             results = list(
                 self.quiz_collection.aggregate(
                     [
-                        {"$match": {"groups": {"$in": topics}}},
+                        {"$match": {"categories": {"$in": topics}}},
                         {"$sample": {"size": no_questions}},
                     ]
                 )
