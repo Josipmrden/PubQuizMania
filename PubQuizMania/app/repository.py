@@ -146,6 +146,11 @@ class QuizRepository:
     def get_number_of_total_questions(self) -> int:
         return self.quiz_collection.count()
 
+    def get_answer_to_question_number(self, question_number: int) -> str:
+        result = self.quiz_collection.find_one({QuestionConstants.NUMBER: question_number}, {"answer": 1, "_id": 0})
+
+        return result[QuestionConstants.ANSWER]
+
 
 class LabelingQuestionInsertionStatus:
     def __init__(self, success: bool, info: str):

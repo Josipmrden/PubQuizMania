@@ -23,6 +23,7 @@ from PubQuizMania.app.controller.controller import (
     get_random_quiz,
     get_unlabeled_question,
     label_question,
+    answer_question,
 )
 from rest_framework.schemas import get_schema_view
 
@@ -42,7 +43,8 @@ urlpatterns = [
     path("unlabeled/", get_unlabeled_question, name="get_unlabeled_question"),
     path("categories/", get_categories, name="get_categories"),
     path("label/stats/", get_labeling_stats, name="get_labeling_stats"),
-    path("label/", label_question, name="label_question")
+    path("label/", label_question, name="label_question"),
+    path("answer_question/", answer_question, name="answer_question"),
 ]
 
 start_script()

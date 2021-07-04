@@ -1,6 +1,8 @@
 from typing import List
+from fuzzywuzzy import fuzz
+import fuzzywuzzy
 
-from PubQuizMania.app.models import AvailableCategories, Question, LabelingStats
+from PubQuizMania.app.models import AvailableCategories, Question, LabelingStats, AnswerResult
 from PubQuizMania.app.repository import QuizRepository, LabelingQuestionInsertionStatus
 
 
@@ -35,3 +37,9 @@ class QuizService:
         number_of_total_questions = self.repository.get_number_of_total_questions()
 
         return LabelingStats(number_of_labeled_questions, number_of_total_questions)
+
+    def answer_question(self, question_number: int, question_answer: str) -> AnswerResult:
+        true_answer = self.repository.get_answer_to_question_number(question_number)
+        is_correct = fuzz.ratio(question_answer, true_answer)
+
+        return AnswerResult(question_number, question_answer, true_answer, is_correct)

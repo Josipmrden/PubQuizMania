@@ -85,6 +85,22 @@ class AvailableCategories(JsonSerializable):
         return {"categories": categories_json}
 
 
+class AnswerResult(JsonSerializable):
+    def __init__(self, question_number: int, question_answer: str, true_answer: str, is_correct: bool) -> None:
+        self.question_number = question_number
+        self.question_answer = question_answer
+        self.true_answer = true_answer
+        self.is_correct = is_correct
+
+    def to_json(self):
+        return {
+            "questionNumber": self.question_number,
+            "questionAnswer": self.question_answer,
+            "isCorrect": self.is_correct,
+            "trueAnswer": self.true_answer,
+        }
+
+
 class LabeledCategories:
     def __init__(self, data):
         self.categories = data.categories

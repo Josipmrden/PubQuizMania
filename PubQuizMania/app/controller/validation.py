@@ -24,7 +24,9 @@ def parse_question_params(request) -> Tuple[int, List]:
     except:
         no_questions = DEFAULT_NO_QUESTIONS
 
-    topics = param_dictionary[QuizRequest.TOPICS][0].split(",") if QuizRequest.TOPICS in param_dictionary else []
+    topics = (
+        param_dictionary[QuizRequest.CATEGORIES][0].split(",") if QuizRequest.CATEGORIES in param_dictionary else []
+    )
 
     return no_questions, topics
 
@@ -104,7 +106,7 @@ def parse_labeled_question(request):
     except:
         return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.INVALID_PARAMS)
 
-    if question_number <= 0: 
+    if question_number <= 0:
         return LabeledQuestionValidationStatus(False, question, InvalidLabelingConstants.NO_NUMBER)
 
     if len(categories) == 0:
@@ -129,3 +131,27 @@ def parse_labeled_question(request):
     question_object = Question(question_number, question, answer, categories)
 
     return LabeledQuestionValidationStatus(True, question_object, "")
+
+
+class AnsweredQuestionValidationStatus:
+    QUESTION_NUMBER = "questionNumber"
+    ANSWER = "answer"
+
+    def __init__(self, question_number: int, answer: str, success: bool) -> None:
+        self.question_number = question_number
+        self.answer = answer
+        self.success = success
+
+
+def parse_answered_question(request):
+    data = request.data
+    if (
+        AnsweredQuestionValidationStatus.QUESTION_NUMBER not in data
+        or AnsweredQuestionValidationStatus.ANSWER not in data
+    ):
+        return AnsweredQuestionValidationStatus(0, 0, False)
+
+    question_number = data[AnsweredQuestionValidationStatus.QUESTION_NUMBER]
+    answer = data[AnsweredQuestionValidationStatus.ANSWER]
+
+    return AnsweredQuestionValidationStatus(question_number, answer, True)
