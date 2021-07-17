@@ -10,33 +10,20 @@
         />
         <div class="nav-item-logo">
           <p class="nav-text-logo">Pub Quiz Mania</p>
-        </div> 
+        </div>
       </div>
 
       <v-spacer></v-spacer>
-      
+
       <ul class="nav-options">
-        <li class="nav-item">
-          <router-link to="/labeling" class="nav-link">
-            <p class="nav-text">OZNAČI PITANJA</p>
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/quiz" class="nav-link">
-            <p class="nav-text">KVIZ</p>
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/pvp" class="nav-link">
-            <p class="nav-text">DVOBOJ</p>
-          </router-link>
-        </li>
+        <NavigationItem linkTo='/labeling'>OZNAČI PITANJA</NavigationItem>
+        <NavigationItem linkTo='/quiz'> KVIZ</NavigationItem>
+        <NavigationItem linkTo='/pvp'>DVOBOJ</NavigationItem>
       </ul>
-      
     </v-app-bar>
 
     <v-main>
-        <router-view></router-view>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
@@ -69,16 +56,6 @@
   align-items: center;
 }
 
-.nav-item {
-  display: inline-block;
-  height: 64px;
-  line-height: 64px;
-  text-align: center;
-  vertical-align: middle;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
 .nav-item-logo {
   display: inline-block;
   height: 64px;
@@ -89,28 +66,20 @@
   padding-right: 10px;
 }
 
-.nav-item:hover {
-  transition: 0.3s;
-  background-color: #eee;
-}
-
 .nav-link {
   text-decoration: none;
   color: black !important;
 }
-
-.nav-text {
-  font-size: 22px;
-  font-weight: 500;
-}
 </style>
 
 <script>
+import NavigationItem from "./components/navigation/NavigationItem";
 
 export default {
   name: "App",
 
   components: {
+    NavigationItem
   },
 
   data: () => ({}),
