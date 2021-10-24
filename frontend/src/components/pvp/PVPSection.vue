@@ -12,16 +12,21 @@
       </v-card>
 
       <v-card class="card" v-if="hostWaiting">
-          <p>Vaš kod je:</p>
+        <p>Vaš kod je:</p>
       </v-card>
 
       <v-card class="card" v-if="guestEnteringKey">
-          <p>Unesite kod za kviz</p>
+        <p>Unesite kod za kviz</p>
       </v-card>
 
       <v-card class="card" v-if="wrongGuestKey">
-          <p>Pogrešan kod!</p>
+        <p>Pogrešan kod!</p>
       </v-card>
+
+      <v-card class="card" v-if="gameModeNotSupported">
+        <p>Način igre nije još podržan!</p>
+      </v-card>
+      <PVPForm v-if="!gameModeNotSupported"/>
     </div>
   </div>
 </template>
@@ -49,17 +54,22 @@ p {
 
 
 <script>
+import PVPForm from "./PVPForm";
+
 export default {
   name: "PVPSection",
-  components: {},
+  components: {
+    PVPForm,
+  },
   props: [],
   data() {
     return {
-        gameMode: false,
-        hostWaiting: false,
-        guestEnteringKey: false,
-        wrongGuestKey: true,
-        gameStarting: false,
+      gameModeNotSupported: false,
+      gameMode: false,
+      hostWaiting: false,
+      guestEnteringKey: false,
+      wrongGuestKey: false,
+      gameStarting: false,
     };
   },
   methods: {},

@@ -1,6 +1,6 @@
 import LabelingSection from './components/LabelingSection';
 import QuizSection from './components/QuizSection';
-import PVPSection from './components/PVPSection';
+import PVPSection from './components/pvp/PVPSection';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
