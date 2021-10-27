@@ -1,7 +1,7 @@
 <template>
   <div class="mb-5">
     <div v-if="numberTotalQuestions() !== undefined">
-      <h2>
+      <h2 class="stats">
         Labelirano: {{ numberLabeledQuestions() }} /
         {{ numberTotalQuestions() }} ({{ labelingPercentage() }}%)
       </h2>
@@ -16,6 +16,9 @@
 </template>
 
 <style scoped>
+.stats {
+  color: var(--v-blue-base);
+}
 </style>
 
 <script>

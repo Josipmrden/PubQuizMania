@@ -27,7 +27,7 @@
         <div class="accept-question-section">
           <v-btn
             class="accept-labeled-question-btn"
-            color="primary"
+            color="blue"
             block
             @click="acceptLabeledQuestion(question)"
           >
@@ -60,6 +60,7 @@
   text-align: center;
   vertical-align: middle;
   padding-right: 10px;
+  color: var(--v-blue-base);
 }
 .labeled-questions-navigation {
   position: absolute;
@@ -76,6 +77,9 @@
 .accept-question-section {
   display: flex;
   justify-content: flex-end;
+}
+.accept-labeled-question-btn {
+  color: white;
 }
 </style>
 

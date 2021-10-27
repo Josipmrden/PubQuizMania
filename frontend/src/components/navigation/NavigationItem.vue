@@ -27,7 +27,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: black !important;
+  color: var(--v-blue-base);
 }
 
 .nav-text {

@@ -29,7 +29,24 @@
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap');
+
+.v-main__wrap {
+  background-color: var(--v-lightGrey-base) !important
+}
+
+#app {
+  font-family: 'Roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+.v-application .title-custom {
+  font-family: 'Encode Sans' !important;
+}
+
 .application {
   font-family: "Roboto", Arial;
   background-color: white;
@@ -64,11 +81,6 @@
   vertical-align: middle;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: black !important;
 }
 </style>
 
