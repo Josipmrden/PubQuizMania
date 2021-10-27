@@ -16,25 +16,6 @@
               src="@/assets/toast.png"
             />
           </div>
-
-          <div class="labeled-questions-navigation">
-            <v-btn
-              color="primary"
-              class="mx-1"
-              :disabled="!canGoBackward"
-              @click="backwardClicked"
-            >
-              <v-icon> mdi-arrow-left </v-icon>
-            </v-btn>
-            <v-btn
-              color="primary"
-              class="mx-1"
-              :disabled="!canGoForward"
-              @click="forwardClicked"
-            >
-              <v-icon> mdi-arrow-right </v-icon>
-            </v-btn>
-          </div>
         </div>
 
         <v-text-field
@@ -100,7 +81,6 @@
 
 
 <script>
-import { mapActions, mapGetters } from "vuex"
 import CategorySection from "./CategorySection"
 
 export default {
@@ -113,17 +93,7 @@ export default {
       errorMessage: "",
     };
   },
-  computed: {
-    ...mapGetters(["isBackwardPossible", "isForwardPossible"]),
-    canGoBackward() {
-      return this.isBackwardPossible;
-    },
-    canGoForward() {
-      return this.isForwardPossible;
-    },
-  },
   methods: {
-    ...mapActions(["backwardCurrentQuestion", "forwardCurrentQuestion"]),
     acceptLabeledQuestion(question) {
       this.$store.dispatch("acceptLabeledQuestion", question).catch((err) => {
         this.errorMessage =
@@ -133,13 +103,7 @@ export default {
 
         this.snackbar = true;
       });
-    },
-    backwardClicked() {
-      this.$store.dispatch("backwardCurrentQuestion");
-    },
-    forwardClicked() {
-      this.$store.dispatch("forwardCurrentQuestion");
-    },
+    }
   },
 };
 </script>

@@ -3,7 +3,7 @@
     <LabelingStats />
     <LabelingQuestion
       v-if="isQuestionPresent"
-      :question="currentQuestion"
+      :question="question"
     >
     </LabelingQuestion>
   </div>
@@ -37,9 +37,9 @@ export default {
     this.$store.dispatch("loadQuestion")
   },
   computed: {
-    ...mapGetters(["currentQuestion"]),
+    ...mapGetters(["question"]),
     isQuestionPresent() {
-      return this.$store.getters.currentQuestion !== undefined
+      return this.$store.getters.question !== undefined
     },
   },
 };

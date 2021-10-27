@@ -12,9 +12,8 @@ export const apiClient = {
     getLabelingStats: () => {
         return Vue.axios.get(`${API_URL}/label/stats/`)
     },
-    getUnlabeledQuestionExcluding: (excludingQuestions) => {
-        var excludingQuestionsQS = excludingQuestions.join(",")
-        return Vue.axios.get(`${API_URL}/unlabeled/?excluded_questions=${excludingQuestionsQS}`)
+    getUnlabeledQuestionExcluding: (excludingQuestion) => {
+        return Vue.axios.get(`${API_URL}/unlabeled/?excluded_questions=${excludingQuestion}`)
     },
     postLabeledQuestion: (data) => {
         return Vue.axios.post(`${API_URL}/label/`, data)

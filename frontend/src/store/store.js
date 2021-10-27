@@ -10,8 +10,7 @@ Vue.use(Vuex)
 
 const state = {
     categories: [],
-    questions: [],
-    currentQuestionIndex: 0,
+    question: {},
     stats: {},
     quiz: {},
     progress: {
@@ -31,18 +30,10 @@ const initializeEmptyCategories = (question) => {
     question.categories = question.categories.sort(function(a, b) {return a.name > b.name ? 1 : -1})
 }
 
-const MAX_NO_QUESTIONS = 3
-
 const mutations = {
     PUSH_QUESTION(state, question) {
-        state.questions = [...state.questions, question]
+        state.question = question
         initializeEmptyCategories(question)
-
-        if (state.questions.length > MAX_NO_QUESTIONS) {
-            state.questions = state.questions.slice(-MAX_NO_QUESTIONS)
-        }
-
-        state.currentQuestionIndex = state.questions.length - 1
     },
 
     ADD_CATEGORIES(state, categories) {
@@ -57,17 +48,6 @@ const mutations = {
         state.stats.noLabeledQuestions += 1
     },
 
-    INCREMENT_QUESTION(state) {
-        state.currentQuestionIndex++
-    },
-
-    DECREMENT_QUESTION(state) {
-        state.currentQuestionIndex--
-    },
-
-    SET_NEWEST_QUESTION(state) {
-        state.currentQuestionIndex = state.questions.length - 1
-    },
     SET_QUIZ(state, quiz) {
         state.quiz = quiz
         state.quiz.forEach((question) => {
@@ -118,12 +98,8 @@ const actions = {
     },
     async acceptLabeledQuestion({ dispatch, commit }, question) {
         return dispatch("labelQuestion", question).then(() => {
-            if (store.getters.isCurrentQuestionMostRecent) {
-                commit(MUTATION_CONSTANTS.INCREMENT_STATS)
-                return dispatch("getAnotherQuestion", question)
-            }
-
-            commit(MUTATION_CONSTANTS.SET_NEWEST_QUESTION, store.getters.getQuestions.length - 1)
+            commit(MUTATION_CONSTANTS.INCREMENT_STATS)
+            return dispatch("getAnotherQuestion", question)
         })
         .catch(err => {
             throw err
@@ -144,20 +120,11 @@ const actions = {
         return apiClient.postLabeledQuestion(data)
     },
     getAnotherQuestion(context, question) {
-        var excludedQuestion = store.getters.getQuestions
-            .map(q => q.number)
-            .filter(number => number != question.number)
-
+        var excludedQuestion = question.number
         apiClient.getUnlabeledQuestionExcluding(excludedQuestion)
           .then((resp) => {
             context.commit(MUTATION_CONSTANTS.PUSH_QUESTION, resp.data.unlabeled_questions[0])
         })
-    },
-    backwardCurrentQuestion: (context) => {
-        context.commit(MUTATION_CONSTANTS.DECREMENT_QUESTION)
-    },
-    forwardCurrentQuestion: (context) => {
-        context.commit(MUTATION_CONSTANTS.INCREMENT_QUESTION)
     },
     getQuiz: (context, payload) => {
         apiClient.getQuiz(payload)
@@ -179,16 +146,11 @@ const actions = {
 
 const getters = {
     categories: state => state.categories,
+    question: state => state.question,
     categoryNames: state => state.categories.map(category => category.name),
-    getQuestions: state => state.questions,
-    currentQuestion: (state) => state.questions[state.currentQuestionIndex],
-    currentCategories: (state) => state.questions[state.currentQuestionIndex].categories,
     numberLabeledQuestions: (state) => state.stats.noLabeledQuestions,
     numberTotalQuestions: (state) => state.stats.noTotalQuestions,
     labelingPercentage: (state) => (state.stats.noLabeledQuestions / state.stats.noTotalQuestions).toFixed(2),
-    isBackwardPossible: (state) => state.currentQuestionIndex !== 0,
-    isForwardPossible: (state) => state.currentQuestionIndex !== state.questions.length - 1,
-    isCurrentQuestionMostRecent: (state) => state.currentQuestionIndex === state.questions.length - 1,
     quiz: (state) => state.quiz,
     noQuestions: (state) => state.quiz.length,
     progress: (state) => state.progress,
